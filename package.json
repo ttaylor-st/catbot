@@ -14,5 +14,8 @@
 		"biome:check": "bunx @biomejs/biome check --write src",
 		"biome:lint": "bunx @biomejs/biome lint --write src",
 		"biome:format": "bunx @biomejs/biome format --write src"
+	},
+	"dependencies": {
+		"discuit-ts": "^0.0.1"
 	}
 }
