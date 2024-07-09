@@ -10,6 +10,7 @@
 		"typescript": "^5.5.3"
 	},
 	"scripts": {
+		"test": "bun test",
 		"start": "bun src/index.ts",
 		"biome:check": "bunx @biomejs/biome check --write src",
 		"biome:lint": "bunx @biomejs/biome lint --write src",
