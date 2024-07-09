@@ -7,7 +7,7 @@
 		"@types/bun": "latest"
 	},
 	"peerDependencies": {
-		"typescript": "^5.0.0"
+		"typescript": "^5.5.3"
 	},
 	"scripts": {
 		"start": "bun src/index.ts",
@@ -16,6 +16,6 @@
 		"biome:format": "bunx @biomejs/biome format --write src"
 	},
 	"dependencies": {
-		"discuit-ts": "^0.0.1"
+		"discuit-ts": "^0.0.3"
 	}
 }
