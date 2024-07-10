@@ -3,7 +3,8 @@
 cat bot is a bot for discuit written in typescript using the [discuit-ts]
 library.
 
-## setup
+## development
+
 
 first, make sure you have [bun] installed.
 
@@ -14,7 +15,20 @@ cd catbot
 bun install
 ```
 
-todo
+i encourage that, when testing functionality, you use a locally hosted
+instance of discuit. check [self-hosting] on the discuit documentation for
+more information.
+
+to run the bot, use the following command:
+```bash
+bun run start
+```
+
+to run tests, use the following command:
+```bash
+bun run test
+```
+
 
 ## license
 
@@ -24,3 +38,4 @@ information.
 
 [discuit-ts]: https://github.com/ttaylor-st/discuit-ts
 [bun]: https://bun.sh/
+[self-hosting]: https://docs.discuit.net/self-hosting
