@@ -1,5 +1,5 @@
 import * as fs from "node:fs";
-import { type Comment, DiscuitClient } from "discuit-ts";
+import { type Comment, DiscuitClient } from "@ttaylor-st/discuit-ts";
 import { logger } from "./Logger";
 import { Watcher } from "./Watcher";
 import type { Config } from "./types";
@@ -7,9 +7,10 @@ import type { Config } from "./types";
 const config: Config = JSON.parse(fs.readFileSync("./config.json", "utf-8"));
 
 const client = new DiscuitClient({
-	baseURL: "https://discuit.ttaylor.run.place/api/",
+	baseURL: config.baseUrl,
 });
 
+await client.initialize();
 const user = await client.login(config.username, config.password);
 logger.info(`Successfully logged in as ${user.username}`);
 

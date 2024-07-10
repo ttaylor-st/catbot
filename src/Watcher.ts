@@ -61,7 +61,6 @@ export class Watcher extends EventEmitter {
 		});
 		const posts = response.posts;
 		for (const post of posts) {
-			if (this.memorisedPosts.has(post.id)) continue;
 			if (!post.comments) continue;
 			for (const comment of post.comments) {
 				if (this.memorisedComments.has(comment.id)) continue;
