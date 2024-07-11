@@ -1,6 +1,6 @@
 import { config } from "./../config";
 import type { Comment } from "@ttaylor-st/discuit-ts";
-import { postFooter } from "../utils";
+import { getGifs, postFooter } from "../utils";
 import type { Command } from "../types";
 
 export const catreactCommand: Command = {
@@ -15,12 +15,8 @@ export const catreactCommand: Command = {
 			reaction = reaction.split(" ")[0] || reaction;
 		}
 
-		const response = await fetch(
-			`https://tenor.googleapis.com/v2/search?q=cat+${reaction}&key=${config.tenorApiKey}&client_key=${config.username}`,
-		);
-
-		const json = await response.json();
-		const gif = json.results[Math.floor(Math.random() * json.results.length)];
+		const gifs = await getGifs(reaction);
+		const gif = gifs[Math.floor(Math.random() * gifs.length)];
 
 		await comment.upvote();
 		await comment.comment(
