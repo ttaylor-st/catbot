@@ -18,9 +18,6 @@ logger.info(`Successfully logged in as ${user.username}`);
 
 const watcher = new Watcher(client);
 watcher.startWatching();
-watcher.on("newPost", (post) => {
-	logger.info(`New post: ${post.title}`);
-});
 
 watcher.on("newComment", async (comment: Comment) => {
 	if (
