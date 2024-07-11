@@ -4,6 +4,7 @@ export type Config = {
 	username: string;
 	password: string;
 	baseUrl: string;
+	tenorApiKey: string;
 };
 
 export type Command = {

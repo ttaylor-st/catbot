@@ -2,13 +2,11 @@ import * as fs from "node:fs";
 import { type Comment, DiscuitClient } from "@ttaylor-st/discuit-ts";
 import { logger } from "./Logger";
 import { Watcher } from "./Watcher";
-import type { Config } from "./types";
+import { config } from "./config";
 
 const commands = fs.readdirSync("./src/commands").map((file) => {
 	return require(`./commands/${file}`).default;
 });
-
-const config: Config = JSON.parse(fs.readFileSync("./config.json", "utf-8"));
 
 const client = new DiscuitClient({
 	baseURL: config.baseUrl,

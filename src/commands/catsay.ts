@@ -103,14 +103,11 @@ function catSay(message: string): string {
 	return `\t${top}\n\t${bubbleLines.join("\n\t")}\n\t${bottom}\n${cat.asciiArt}\n\t\t\t-- ${cat.name}`;
 }
 
-
 const catsayCommand: Command = {
 	fullName: "catsay",
 	aliases: ["catsay"],
 	communities: [],
 	execute: async (comment: Comment) => {
-		// get the text after the command, don't just replace "!catsay" because the user might have content
-		// before the command, which would be removed.
 		let replyText = comment.body;
 		const commandPosition = comment.body.indexOf("!catsay");
 		if (commandPosition !== -1) {
