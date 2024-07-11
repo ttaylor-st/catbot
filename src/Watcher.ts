@@ -1,5 +1,5 @@
 import { EventEmitter } from "node:events";
-import type { DiscuitClient } from "discuit-ts";
+import type { DiscuitClient } from "@ttaylor-st/discuit-ts";
 
 /**
  * @name Watcher
@@ -21,7 +21,7 @@ export class Watcher extends EventEmitter {
 	/** The `DiscuitClient` to use for making requests. */
 	private client: DiscuitClient;
 	/** The time to start watching from. Posts and comments created before this time will be ignored. */
-	private after: number;
+	private readonly after: number;
 
 	/**
 	 * @param {DiscuitClient} client - The client to use for making requests.
