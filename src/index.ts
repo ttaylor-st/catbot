@@ -4,6 +4,10 @@ import { logger } from "./Logger";
 import { Watcher } from "./Watcher";
 import type { Config } from "./types";
 
+const commands = fs.readdirSync("./src/commands").map((file) => {
+	return require(`./commands/${file}`).default;
+});
+
 const config: Config = JSON.parse(fs.readFileSync("./config.json", "utf-8"));
 
 const client = new DiscuitClient({
@@ -20,6 +24,35 @@ watcher.on("newPost", (post) => {
 	logger.info(`New post: ${post.title}`);
 });
 
-watcher.on("newComment", (comment: Comment) => {
-	logger.info(`New comment: ${comment.body}`);
+watcher.on("newComment", async (comment: Comment) => {
+	if (
+		comment.author.username === config.username &&
+		!comment.body.includes("#human")
+	) {
+		return;
+	}
+
+	for (const command of commands) {
+		if (
+			command.aliases.some((alias: string) =>
+				comment.body.includes(`!${alias}`),
+			)
+		) {
+			logger.info(
+				`Running command ${command.fullName} for ${comment.author.username}`,
+			);
+			await command.execute(comment);
+		}
+	}
 });
+
+process.on("uncaughtException", (err: Error, origin: string) => {
+	logger.error(`Uncaught exception at ${origin}: ${err}`);
+});
+
+process.on(
+	"unhandledRejection",
+	(reason: Error | unknown, promise: Promise<unknown>) => {
+		logger.error(`Unhandled exception at ${promise}: ${reason}`);
+	},
+);
