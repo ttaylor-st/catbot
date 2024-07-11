@@ -1,3 +1,5 @@
+import { config } from "./config";
+
 export const CAT_WORDS = [
 	"cat",
 	"kitten",
@@ -75,4 +77,13 @@ export const postFooter = () => {
 		\nMechanical meow, meow! 🤖🐱
 		I am a bot, and this action was performed automatically.
 		If you have any questions or concerns, please let me know ${link}! 🐾`;
+};
+
+export const getGifs = async (search: string) => {
+	const response = await fetch(
+		`https://tenor.googleapis.com/v2/search?q=cat+${search}&key=${config.tenorApiKey}`,
+	);
+
+	const json = await response.json();
+	return json.results;
 };
