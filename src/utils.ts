@@ -1,3 +1,13 @@
+export const CAT_WORDS = [
+	"cat",
+	"kitten",
+	"feline",
+	"meow",
+	"purr",
+	"whiskers",
+	"paw",
+];
+
 /**
  * @name countInWord
  * @description Counts the number of syllables in a single word using simple vowel count
@@ -29,4 +39,40 @@ export const syllableCount = (sentence: string): number => {
 	}
 
 	return syllableCount;
+};
+
+/**
+ * @name calculateCatScore
+ * @description Calculates the cat score of text, based on a super-duper complex algorithm
+ * @param {string} text - The text to calculate the cat score of
+ * @returns {number} - The cat score of the text
+ */
+export const calculateCatScore = (text: string): number => {
+	const words = text.split(/\s+/);
+	const wordCount = words.length;
+	const sentences = text.split(/[.!?]+/).filter(Boolean).length || 1;
+	const syllables = syllableCount(text);
+
+	let score =
+		206.835 - 1.015 * (wordCount / sentences) - 84.6 * (syllables / wordCount);
+
+	const lengthFactor = Math.min(1, wordCount / 100);
+	score *= lengthFactor;
+
+	const catWordCount = words.filter((word) =>
+		CAT_WORDS.includes(word.toLowerCase()),
+	).length;
+	const catWordBonus = (catWordCount / wordCount) * 50;
+	score += catWordBonus;
+
+	return Math.round(score);
+};
+
+export const postFooter = () => {
+	const link = "[here](https://discuit.net/catbot)";
+
+	return `------
+		\nMechanical meow, meow! 🤖🐱
+		I am a bot, and this action was performed automatically.
+		If you have any questions or concerns, please let me know ${link}! 🐾`;
 };
