@@ -17,6 +17,6 @@
 		"biome:format": "bunx @biomejs/biome format --write src"
 	},
 	"dependencies": {
-		"discuit-ts": "^0.0.3"
+		"@ttaylor-st/discuit-ts": "npm:@jsr/ttaylor-st__discuit-ts"
 	}
 }
