@@ -80,8 +80,9 @@ export const postFooter = () => {
 };
 
 export const getGifs = async (search: string) => {
+	const encodedSearch = encodeURIComponent(`cat ${search}`);
 	const response = await fetch(
-		`https://tenor.googleapis.com/v2/search?q=cat+${search}&key=${config.tenorApiKey}`,
+		`https://tenor.googleapis.com/v2/search?q=${encodedSearch}&key=${config.tenorApiKey}&limit=10`,
 	);
 
 	const json = await response.json();
