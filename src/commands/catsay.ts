@@ -120,7 +120,6 @@ const catsayCommand: Command = {
 			// biome-ignore lint: i'm not going to use a template literal here.
 			"```\n" + `${replyText}` + "\n```";
 
-		await comment.upvote();
 		await comment.comment(`${reply}\n${postFooter()}`);
 	},
 };

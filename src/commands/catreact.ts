@@ -18,7 +18,6 @@ export const catreactCommand: Command = {
 		const gifs = await getGifs(reaction);
 		const gif = gifs[Math.floor(Math.random() * gifs.length)];
 
-		await comment.upvote();
 		await comment.comment(
 			`[Here's your ${reaction} cat!](${gif.url}) Via [Tenor](https://tenor.com)\n${postFooter()}`,
 		);

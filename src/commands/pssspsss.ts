@@ -41,7 +41,6 @@ export const pssspsCommand: Command = {
 		const gifs = await getGifs(option.search);
 		const gif = gifs[Math.floor(Math.random() * gifs.length)];
 
-		await comment.upvote();
 		await comment.comment(
 			`[${message}](${gif.url}) Via [Tenor](https://tenor.com)\n${postFooter()}`,
 		);

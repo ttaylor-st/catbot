@@ -10,7 +10,6 @@ export const catpetCommand: Command = {
 		const gifs = await getGifs("cat pet");
 		const gif = gifs[Math.floor(Math.random() * gifs.length)];
 
-		await comment.upvote();
 		await comment.comment(
 			`[Here's a cat for you to pet!](${gif.url}) Via [Tenor](https://tenor.com)\n${postFooter()}`,
 		);
