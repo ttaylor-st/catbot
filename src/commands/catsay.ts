@@ -70,7 +70,7 @@ function getCat() {
 		},
 	];
 
-	const cat = cats[1];
+	const cat = cats[Math.floor(Math.random() * cats.length)];
 	cat.asciiArt = cat.asciiArt.replace(/`\\/g, "\\");
 	cat.asciiArt = cat.asciiArt.replace(/\t/g, "");
 	cat.asciiArt = cat.asciiArt.replace(/\n/g, "\n\t");
